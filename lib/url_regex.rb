@@ -1,4 +1,4 @@
-require "url_regex/version"
+require 'url_regex/version'
 
 module UrlRegex
   # Your code goes here...
