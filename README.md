@@ -5,7 +5,14 @@
 
 # UrlRegex
 
-TODO: Write a gem description
+Provides the best known regex for validating and extracting URLs.
+It uses amazing job done by [Diego Perini](https://gist.github.com/dperini/729294) 
+and [Mathias Bynens](https://mathiasbynens.be/demo/url-regex).
+
+Why do we need a gem for this regex? 
+
+- You don't need to watch changes and improvements of original regex.
+- You have an ability to slightly customize the regex: a scheme can be optional, can get the regex for validation or parsing.
 
 ## Installation
 
@@ -23,12 +30,11 @@ Or install it yourself as:
 
 ## Usage
 
+
 TODO: Write usage instructions here
 + parsing html
 + optimization
 
-https://mathiasbynens.be/demo/url-regex
-https://gist.github.com/gruber/8891611
 
 ## Contributing
 
