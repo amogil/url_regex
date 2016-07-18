@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/amogil/url_regex.svg?branch=master)](https://travis-ci.org/amogil/url_regex)
 [![Code Climate](https://codeclimate.com/github/amogil/url_regex/badges/gpa.svg)](https://codeclimate.com/github/amogil/url_regex)
+[![GitHub version](https://badge.fury.io/gh/amogil%2Furl_regex.svg)](https://badge.fury.io/gh/amogil%2Furl_regex)
+
 # UrlRegex
 
 TODO: Write a gem description
