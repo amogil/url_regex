@@ -36,9 +36,9 @@ Get the regex:
     
 where options are:
 
-- `scheme_required` indicates that schema is required, defaults `true`.
+- `scheme_required` indicates that schema is required, defaults to `true`.
 
-- `mode` can gets either `:validation` or `:parsing`, defaults `:validation`.
+- `mode` can gets either `:validation` or `:parsing`, defaults to `:validation`.
 
 `:validation` asks to return the regex for validation, namely, with `\A` prefix, and with `\z` postfix.
 That means, it matches whole text:

@@ -1,6 +1,15 @@
 require 'url_regex/version'
 
+# Provides the best known regex for validating and extracting URLs.
+# It uses amazing job done by [Diego Perini](https://gist.github.com/dperini/729294)
+# and [Mathias Bynens](https://mathiasbynens.be/demo/url-regex).
+
 module UrlRegex
+  # Returns the regex for URLs parsing or validating.
+  #
+  # @param scheme_required [Boolean] will the regex require scheme presence, defaults to true
+  # @param mode [Symbol] purpose of the regex, `:validation` or `parsing`, defaults to `:validation`
+  # @return [Regex] regex for parsing or validating
   def self.get(scheme_required: true, mode: :validation)
     raise ArgumentError, "wrong mode: #{mode}" if MODES.index(mode).nil?
     scheme = scheme_required ? PROTOCOL_IDENTIFIER : PROTOCOL_IDENTIFIER_OPTIONAL
