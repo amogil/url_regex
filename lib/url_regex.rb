@@ -1,12 +1,13 @@
 require 'url_regex/version'
 
 module UrlRegex
-  FULL = %r{
-    \A
+  def self.get(scheme_required: true, mode: :validation)
+    raise ArgumentError, "wrong mode: #{mode}" if MODES.index(mode).nil?
+    scheme = scheme_required ? PROTOCOL_IDENTIFIER : PROTOCOL_IDENTIFIER_OPTIONAL
+    mode == :validation ? /\A#{scheme} #{BASE}\z/xi : /#{scheme} #{BASE}/xi
+  end
 
-    # protocol identifier
-    (?:(?:https?|ftp)://)
-
+  BASE = '
     # user:pass authentication
     (?:\S+(?::\S*)?@)?
 
@@ -40,7 +41,11 @@ module UrlRegex
 
     # resource path
     (?:[/?#]\S*)?
+  '.freeze
 
-    \z
-  }xi.freeze
+  PROTOCOL_IDENTIFIER = '(?:(?:https?|ftp)://)'.freeze
+  PROTOCOL_IDENTIFIER_OPTIONAL = '(?:(?:https?|ftp)://)?'.freeze
+  MODES = [:validation, :parsing].freeze
+
+  private_constant :BASE, :PROTOCOL_IDENTIFIER, :PROTOCOL_IDENTIFIER_OPTIONAL, :MODES
 end
