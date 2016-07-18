@@ -63,7 +63,7 @@ so you can use it as usual.
 
 All regexes are case-insensitive.
 
-FAQ:
+## FAQ
 
 Q: Hey, I want to parse HTML, but it doesn't work:
     
