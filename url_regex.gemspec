@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = UrlRegex::VERSION
   spec.authors       = ['Alexey Mogilnikov']
   spec.email         = ['alexey@mogilnikov.name']
-  spec.summary       = 'Provides the best regex for validating or extracting URLs'
-  spec.description   = ''
+  spec.summary       = 'Provides the best regex for validating or extracting URLs.'
+  spec.description   = 'Provides the best regex for validating or extracting URLs.'
   spec.homepage      = 'https://github.com/amogil/url_regex'
   spec.license       = 'MIT'
 
