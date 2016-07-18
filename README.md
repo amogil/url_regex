@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/amogil/url_regex.svg?branch=master)](https://travis-ci.org/amogil/url_regex)
+
 # UrlRegex
 
 TODO: Write a gem description
@@ -19,6 +21,8 @@ Or install it yourself as:
 ## Usage
 
 TODO: Write usage instructions here
++ parsing html
++ optimization
 
 ## Contributing
 
