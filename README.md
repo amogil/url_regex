@@ -41,7 +41,7 @@ where options are:
 - `mode` can gets either `:validation` or `:parsing`, defaults `:validation`.
 
 `:validation` asks to return the regex for validation, namely, with `\A` prefix, and with `\z` postfix.
-That means, it validates whole string:
+That means, it matches whole text:
 
     UrlRegex.get(mode: :validation).match('https://www.google.com').nil?
     # => false
@@ -67,16 +67,17 @@ FAQ:
 
 Q: Hey, I want to parse HTML, but it doesn't work:
     
-    '<a href="http://google.com?t=1">Link</a>'.scan(UrlRegex.get(mode: :parsing))
+    str = '<a href="http://google.com?t=1">Link</a>'
+    str.scan(UrlRegex.get(mode: :parsing))
     # => "http://google.com?t=1">Link</a>"
     
 A: Well, you probably know that parsing HTML with regex is 
 [a bad idea](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags).
+It requires matching corresponding open and close brackets, that makes the regex even more complicated.
 
+Q: How can I speed up processing?
 
-+ parsing html
-+ optimization
-
+A: Generated regex depends only on options, so you can get the regex only once and cache it. 
 
 ## Contributing
 
