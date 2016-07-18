@@ -27,6 +27,9 @@ TODO: Write usage instructions here
 + parsing html
 + optimization
 
+https://mathiasbynens.be/demo/url-regex
+https://gist.github.com/gruber/8891611
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/url_regex/fork )
