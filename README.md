@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/amogil/url_regex.svg?branch=master)](https://travis-ci.org/amogil/url_regex)
 [![Code Climate](https://codeclimate.com/github/amogil/url_regex/badges/gpa.svg)](https://codeclimate.com/github/amogil/url_regex)
 [![GitHub version](https://badge.fury.io/gh/amogil%2Furl_regex.svg)](https://badge.fury.io/gh/amogil%2Furl_regex)
+[![Dependency Status](https://gemnasium.com/badges/github.com/amogil/url_regex.svg)](https://gemnasium.com/github.com/amogil/url_regex)
 
 # UrlRegex
 
