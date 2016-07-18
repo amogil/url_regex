@@ -30,8 +30,50 @@ Or install it yourself as:
 
 ## Usage
 
+Get the regex:
 
-TODO: Write usage instructions here
+    UrlRegex.get(options)
+    
+where options are:
+
+- `scheme_required` indicates that schema is required, defaults `true`.
+
+- `mode` can gets either `:validation` or `:parsing`, defaults `:validation`.
+
+`:validation` asks to return the regex for validation, namely, with `\A` prefix, and with `\z` postfix.
+That means, it validates whole string:
+
+    UrlRegex.get(mode: :validation).match('https://www.google.com').nil?
+    # => false
+    UrlRegex.get(mode: :validation).match('link: https://www.google.com').nil?
+    # => true
+    
+`:parsing` asks to return the regex for parsing:
+
+    str = 'links: google.com https://google.com?t=1'
+    str.scan(UrlRegex.get(mode: :parsing))
+    # => ["https://google.com?t=1"]
+        
+    # schema is not required
+    str.scan(UrlRegex.get(scheme_required: false, mode: :parsing))
+    # => ["google.com", "https://google.com?t=1"]
+
+`UrlRegex.get` returns regular Ruby's [Regex](http://ruby-doc.org/core-2.0.0/Regexp.html) object,
+so you can use it as usual.
+
+All regexes are case-insensitive.
+
+FAQ:
+
+Q: Hey, I want to parse HTML, but it doesn't work:
+    
+    '<a href="http://google.com?t=1">Link</a>'.scan(UrlRegex.get(mode: :parsing))
+    # => "http://google.com?t=1">Link</a>"
+    
+A: Well, you probably know that parsing HTML with regex is 
+[a bad idea](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags).
+
+
 + parsing html
 + optimization
 
