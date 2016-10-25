@@ -6,13 +6,13 @@
 # UrlRegex
 
 Provides the best known regex for validating and extracting URLs.
-It uses amazing job done by [Diego Perini](https://gist.github.com/dperini/729294) 
+It builds on amazing work done by [Diego Perini](https://gist.github.com/dperini/729294) 
 and [Mathias Bynens](https://mathiasbynens.be/demo/url-regex).
 
 Why do we need a gem for this regex? 
 
-- You don't need to watch changes and improvements of original regex.
-- You have an ability to slightly customize the regex: a scheme can be optional, can get the regex for validation or parsing.
+- You don't need to follow changes and improvements of original regex.
+- You can slightly customize the regex: a scheme can be optional, and you can get the regex for validation or parsing.
 
 ## Installation
 
