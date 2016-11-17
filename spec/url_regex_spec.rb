@@ -51,7 +51,9 @@ describe UrlRegex do
       'http://a.b--c.de/',
       'http://www.foo.bar./',
       'http://223.255.255.254',
-      'http://example.org?foo=bar'
+      'http://example.org?foo=bar',
+      'mailto:foo.bar@test.com.au',
+      'mailto:foo@test.com'
     ].each do |valid_url|
       it "should match #{valid_url}" do
         expect(UrlRegex.get(scheme_required: true)).to match valid_url
@@ -95,7 +97,9 @@ describe UrlRegex do
       'http://.www.foo.bar/',
       'http://.www.foo.bar./',
       'http://10.1.1.1',
-      'http://10.1.1.254'
+      'http://10.1.1.254',
+      'foo.bar@test.com.au',
+      'foo@test.com'
     ].each do |invalid_url|
       it "should not match #{invalid_url}" do
         expect(UrlRegex.get(scheme_required: true)).to_not match invalid_url

@@ -6,10 +6,10 @@
 # UrlRegex
 
 Provides the best known regex for validating and extracting URLs.
-It builds on amazing work done by [Diego Perini](https://gist.github.com/dperini/729294) 
+It builds on amazing work done by [Diego Perini](https://gist.github.com/dperini/729294)
 and [Mathias Bynens](https://mathiasbynens.be/demo/url-regex).
 
-Why do we need a gem for this regex? 
+Why do we need a gem for this regex?
 
 - You don't need to follow changes and improvements of original regex.
 - You can slightly customize the regex: a scheme can be optional, and you can get the regex for validation or parsing.
@@ -33,7 +33,7 @@ Or install it yourself as:
 Get the regex:
 
     UrlRegex.get(options)
-    
+
 where options are:
 
 - `scheme_required` indicates that schema is required, defaults to `true`.
@@ -47,13 +47,18 @@ That means, it matches whole text:
     # => false
     UrlRegex.get(mode: :validation).match('link: https://www.google.com').nil?
     # => true
-    
+    UrlRegex.get(mode: :validation).match('mailto:foo.bar@gmail.com').nil?
+    # => false
+    UrlRegex.get(mode: :validation).match('foo.bar@gmail.com').nil?
+    # => true
+
+
 `:parsing` asks to return the regex for parsing:
 
     str = 'links: google.com https://google.com?t=1'
     str.scan(UrlRegex.get(mode: :parsing))
     # => ["https://google.com?t=1"]
-        
+
     # schema is not required
     str.scan(UrlRegex.get(scheme_required: false, mode: :parsing))
     # => ["google.com", "https://google.com?t=1"]
@@ -66,18 +71,18 @@ All regexes are case-insensitive.
 ## FAQ
 
 Q: Hey, I want to parse HTML, but it doesn't work:
-    
+
     str = '<a href="http://google.com?t=1">Link</a>'
     str.scan(UrlRegex.get(mode: :parsing))
     # => "http://google.com?t=1">Link</a>"
-    
-A: Well, you probably know that parsing HTML with regex is 
+
+A: Well, you probably know that parsing HTML with regex is
 [a bad idea](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags).
 It requires matching corresponding open and close brackets, that makes the regex even more complicated.
 
 Q: How can I speed up processing?
 
-A: Generated regex depends only on options, so you can get the regex only once and cache it. 
+A: Generated regex depends only on options, so you can get the regex only once and cache it.
 
 ## Contributing
 
