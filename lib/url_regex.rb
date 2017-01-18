@@ -13,7 +13,15 @@ module UrlRegex
   def self.get(scheme_required: true, mode: :validation)
     raise ArgumentError, "wrong mode: #{mode}" if MODES.index(mode).nil?
     scheme = scheme_required ? PROTOCOL_IDENTIFIER : PROTOCOL_IDENTIFIER_OPTIONAL
-    mode == :validation ? /\A#{scheme} #{BASE}\z/xi : /#{scheme} #{BASE}/xi
+    case mode
+    when :validation
+      regex = /\A#{scheme} #{BASE}\z/xi
+    when :parsing
+      regex = /#{scheme} #{BASE}/xi
+    when :javascript
+      regex = /^#{scheme}#{JAVASCRIPT_BASE}$/
+    end
+    regex
   end
 
   BASE = '
@@ -52,9 +60,11 @@ module UrlRegex
     (?:[/?#]\S*)?
   '.freeze
 
+  JAVASCRIPT_BASE = '(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?'
+
   PROTOCOL_IDENTIFIER = '(?:(?:https?|ftp)://)'.freeze
   PROTOCOL_IDENTIFIER_OPTIONAL = '(?:(?:https?|ftp)://)?'.freeze
-  MODES = [:validation, :parsing].freeze
+  MODES = [:validation, :parsing, :javascript].freeze
 
   private_constant :BASE, :PROTOCOL_IDENTIFIER, :PROTOCOL_IDENTIFIER_OPTIONAL, :MODES
 end
