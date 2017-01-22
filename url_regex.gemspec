@@ -6,7 +6,7 @@ require 'url_regex/version'
 Gem::Specification.new do |spec|
   spec.name          = 'url_regex'
   spec.version       = UrlRegex::VERSION
-  spec.authors       = ['Alexey Mogilnikov']
+  spec.authors       = ['Alexey Mogilnikov', 'Michael Bester']
   spec.email         = ['alexey@mogilnikov.name']
   spec.summary       = 'Provides the best regex for validating or extracting URLs.'
   spec.description   = 'Provides the best regex for validating or extracting URLs.'
