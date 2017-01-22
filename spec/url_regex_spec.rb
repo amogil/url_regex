@@ -56,6 +56,9 @@ describe UrlRegex do
       it "should match #{valid_url}" do
         expect(UrlRegex.get(scheme_required: true)).to match valid_url
       end
+      it "should match #{valid_url} against Javascript regex" do
+        expect(UrlRegex.get(scheme_required: true, mode: :javascript)).to match valid_url
+      end
     end
 
     [
@@ -99,6 +102,9 @@ describe UrlRegex do
     ].each do |invalid_url|
       it "should not match #{invalid_url}" do
         expect(UrlRegex.get(scheme_required: true)).to_not match invalid_url
+      end
+      it "should not match #{invalid_url} against Javascript regex" do
+        expect(UrlRegex.get(scheme_required: true, mode: :javascript)).to_not match invalid_url
       end
     end
   end
@@ -149,6 +155,9 @@ describe UrlRegex do
       it "should match #{valid_url}" do
         expect(UrlRegex.get(scheme_required: false)).to match valid_url
       end
+      it "should match #{valid_url} against Javascript regex" do
+        expect(UrlRegex.get(scheme_required: false, mode: :javascript)).to match valid_url
+      end
     end
 
     [
@@ -190,6 +199,9 @@ describe UrlRegex do
     ].each do |invalid_url|
       it "should not match #{invalid_url}" do
         expect(UrlRegex.get(scheme_required: false)).to_not match invalid_url
+      end
+      it "should not match #{invalid_url} against Javascript regex" do
+        expect(UrlRegex.get(scheme_required: false, mode: :javascript)).to_not match invalid_url
       end
     end
   end
